@@ -6,7 +6,7 @@ import os
 import shutil
 import zipfile
 from pathlib import Path
-from typing import List, Optional, Set
+from typing import List, Optional
 
 from .mod_info import ModInfo
 

@@ -3,7 +3,7 @@ Module for handling Project Zomboid mod.info files (b42 format).
 """
 
 import re
-from typing import Dict, Optional, List
+from typing import List, Optional
 
 
 class ModInfo:
