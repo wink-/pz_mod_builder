@@ -4,6 +4,7 @@ Example: Validating an existing Project Zomboid b42 mod.
 """
 
 import sys
+
 from pz_mod_builder import ModBuilder
 
 

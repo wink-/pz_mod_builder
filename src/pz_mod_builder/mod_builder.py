@@ -2,11 +2,12 @@
 Module for building and packaging Project Zomboid b42 mods.
 """
 
-import os
 import shutil
 import zipfile
 from pathlib import Path
 from typing import List, Optional
+
+from PIL import Image, UnidentifiedImageError
 
 from .mod_info import ModInfo
 
@@ -89,19 +90,32 @@ class ModBuilder:
             poster_path = self.mod_path / self.mod_info.poster
             if not poster_path.exists():
                 issues.append(f"Poster image not found: {self.mod_info.poster}")
+            else:
+                try:
+                    with Image.open(poster_path) as img:
+                        img.verify()
+                except (IOError, UnidentifiedImageError):
+                    issues.append(f"Invalid poster image: {self.mod_info.poster}")
         
         # Check for tile image if specified
         if self.mod_info and self.mod_info.tile:
             tile_path = self.mod_path / self.mod_info.tile
             if not tile_path.exists():
                 issues.append(f"Tile image not found: {self.mod_info.tile}")
+            else:
+                try:
+                    with Image.open(tile_path) as img:
+                        img.verify()
+                except (IOError, UnidentifiedImageError):
+                    issues.append(f"Invalid tile image: {self.mod_info.tile}")
         
         # Validate file extensions
         for file_path in self.mod_path.rglob('*'):
             if file_path.is_file() and file_path.name != 'mod.info':
                 ext = file_path.suffix.lower()
                 if ext and ext not in self.VALID_EXTENSIONS:
-                    issues.append(f"Unusual file extension: {file_path.relative_to(self.mod_path)}")
+                    rel_path = file_path.relative_to(self.mod_path)
+                    issues.append(f"Unusual file extension: {rel_path}")
         
         return issues
     

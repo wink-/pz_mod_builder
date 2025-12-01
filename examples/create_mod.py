@@ -4,7 +4,8 @@ Example: Creating a new Project Zomboid b42 mod using the Python API.
 """
 
 import os
-from pz_mod_builder import ModInfo, ModBuilder
+
+from pz_mod_builder import ModBuilder, ModInfo
 
 
 def main():

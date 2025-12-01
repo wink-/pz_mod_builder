@@ -47,3 +47,4 @@ htmlcov/
 # Mod building
 *.zip
 mods_output/
+my_mod/

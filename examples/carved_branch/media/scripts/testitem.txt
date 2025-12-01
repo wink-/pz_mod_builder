@@ -1,0 +1,11 @@
+module MyMod {
+
+    item TestItem
+    {
+        Type = Food,
+        DisplayName = TestItemTest Food Item,
+        Icon = Question,
+        Weight = 1.0,
+    }
+
+}

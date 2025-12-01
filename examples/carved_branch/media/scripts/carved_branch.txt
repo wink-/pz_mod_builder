@@ -1,0 +1,37 @@
+module CarvedBranchMod {
+
+    item CarvedBranch
+    {
+        Type = Weapon,
+        DisplayName = Carved Branch,
+        Icon = TreeBranch,
+        Weight = 1.0,
+        
+        /* Weapon Stats */
+        MinDamage = 0.3,
+        MaxDamage = 0.6,
+        PushBackMod = 0.3,
+        DoorDamage = 1,
+        TreeDamage = 0,
+        KnockBackOnNoDeath = TRUE,
+        SwingAnim = Bat,
+        WeaponSprite = TreeBranch,
+        IdleAnim = Idle_Weapon_Light,
+        RunAnim = Run_Weapon_Light,
+        TwoHandWeapon = FALSE,
+        ConditionMax = 5,
+        ConditionLowerChanceOneIn = 5,
+        HitChance = 10,
+        CritDmgMultiplier = 2,
+    }
+
+    recipe Carve Branch
+    {
+        Keep KitchenKnife/HuntingKnife/StoneKnife,
+        TreeBranch,
+        Result:CarvedBranch,
+        Time:50.0,
+        Category:Survivalist,
+    }
+
+}
